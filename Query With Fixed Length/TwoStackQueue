@@ -1,0 +1,80 @@
+var Stack = require('./Stack');
+
+function Queue() {
+
+    //Stack declarations
+    var inputStack  = new Stack();
+    var outputStack = new Stack();
+
+    this.enqueue = function(item) {
+        inputStack.push(item);
+    }//end method enqueue()
+
+    this.dequeue = function() {
+        //Check first to see if Stack is empty. If its not, then just pop and return the element
+        //like normal.
+        if(outputStack.isEmpty()){
+            //Now check to see if the first stack is empty to see if there are any elements in the                 //queue. If the first stack is not empty, then the elements must be moved before they can
+            //be popped from the second queue
+            if(inputStack.isEmpty()){
+                console.log("The queue is empty. Cannot " +
+                    "dequeue.");
+            } else {
+                this.moveStack(inputStack, outputStack);
+                top = outputStack.pop();
+                return top;
+            }//end if-else
+        } else {
+
+            //return frist item off stack2
+            //which is frist item in queue
+            top = outputStack.pop();
+
+            //return first item in queue
+            return top;
+        }//end if-else
+    }//end method dequeue()
+
+    this.front = function () {
+
+        if (outputStack.isEmpty()) {
+            //Now check to see if the first stack is empty to see if there are any elements in the                 //queue. If the first stack is not empty, then the elements must be moved before they can
+            //be popped from the second queue
+            if (!inputStack.isEmpty()) {
+
+                this.moveStack(inputStack, outputStack);
+
+                return outputStack.peek();
+            }//end if-else
+        } else {
+
+            return outputStack.peek();
+        }
+    }
+
+
+    this.print = function() {
+
+        if(outputStack.isEmpty()){
+            if(inputStack.isEmpty()){
+                console.log("The queue is empty.");
+            } else {
+                this.moveStack(inputStack, outputStack);
+                console.log(outputStack.peek());
+            }//end if-else
+        } else {
+            console.log(outputStack.peek());
+        }//end if-else
+
+    }//end method print()
+
+
+    this.moveStack = function(stackOne, stackTwo) {
+
+        while(!stackOne.isEmpty()) {
+            stackTwo.push(stackOne.pop());
+        }//end while
+    }//end method moveStack()
+}
+
+module.exports = Queue;
