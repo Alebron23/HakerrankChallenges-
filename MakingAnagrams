@@ -1,0 +1,58 @@
+function main() {
+    var a = readLine();
+    var b = readLine();
+    
+    var string1 = [];
+    var string2 = [];
+    var deleteString = 0;
+    
+    if(a.length > b.length){
+        var stringLength = a.length;
+    } else {
+        var stringLength = b.length;
+    }
+    
+    for(i=0; i < stringLength; i++){
+        
+        if(string1[a.charCodeAt(i)] == undefined){
+            string1[a.charCodeAt(i)] = 1;
+        } else {
+            string1[a.charCodeAt(i)] += 1;       
+        } 
+        
+        if(string2[b.charCodeAt(i)] == undefined){
+            string2[b.charCodeAt(i)] = 1;
+        } else {
+            string2[b.charCodeAt(i)] += 1;       
+        }   
+    }
+    
+    if(string1.length > string2.length){
+        var length = string1.length;
+    } else {
+        var length = string2.length;
+    }
+    
+    for(k=0; k<length; k++){
+        
+        if(string1[k] != string2[k]){
+            
+            if(string1[k] != undefined && string2[k] != undefined){
+                if(string1[k] > string2[k]){
+                    deleteString += string1[k] - string2[k];
+                } else {
+                    deleteString += string2[k] - string1[k];
+                }   
+            }else{
+                
+                if(string1[k] != undefined){
+                    deleteString += string1[k];
+                }else{
+                    deleteString += string2[k];
+                } 
+            }
+        }
+    }
+   
+    console.log(deleteString);
+}
