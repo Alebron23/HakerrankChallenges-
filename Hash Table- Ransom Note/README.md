@@ -1,3 +1,5 @@
+Problem Description: 
+
 A kidnapper wrote a ransom note but is worried it will be traced back to him. He found a magazine and wants to know if he 
 can cut out whole words from it and use them to create an untraceable replica of his ransom note. The words in his note 
 are case-sensitive and he must use whole words available in the magazine, meaning he cannot use substrings or concatenation 
